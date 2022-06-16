@@ -1,0 +1,4 @@
+---
+title: Clothes
+layout: list
+---

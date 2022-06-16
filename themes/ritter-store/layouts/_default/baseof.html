@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+    <body>
+        {{- partial "header.html" . -}}
+        <div id="content">
+        {{- block "main" . }}{{- end }}
+        </div>
+        <div class="snipcart-checkout pos-fix pin-bottom pin-right mr-4 mb-4">
+            <button class="snipcart-summary button button--lg button--salmon text--white">
+                <span class="mr-2 flex flex--align-center">
+                <svg aria-hidden="true" id="_Layer_" data-name="<Layer>" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.88 288" style="width: 1.25rem;"><path d="M208.44,57.26H167.68c-1.37-29-25.85-53.07-54.69-53.07s-53.42,24-54.79,53.07H17.45a12,12,0,0,0-12,12V271a12,12,0,0,0,12,12h191a12.36,12.36,0,0,0,2-.17,12,12,0,0,0,10-11.83V69.26A12,12,0,0,0,208.44,57.26ZM113,28.19c15.55,0,29.28,13.31,30.64,29.07H82.25C83.62,41.5,97.39,28.19,113,28.19ZM196.44,259h-167V81.26H58.13V92.21a12,12,0,0,0,24,0V81.26h61.62V92.21a12,12,0,0,0,24,0V81.26h28.69Z" style="fill: var(--white);"></path></svg>
+                <span class="ml-2">Cart: </span>
+                </span>
+                <span class="snipcart-total-price"></span>
+            </button>
+        </div>
+        {{- partial "footer.html" . -}}
+    </body>
+</html>

@@ -1,0 +1,36 @@
+{{ define "main" }}
+  <article class="max-container">
+    <section class="block-container">
+      <div class="block lg-tablet-up-6 p-4">
+        <figure class="figure-hover">
+          <img src="{{ .Params.Image }}" alt="{{ .Params.Image_alt }}">
+          <figcaption>{{ .Params.Image_alt }}</figcaption>
+        </figure>
+      </div>
+      <div class="block lg-tablet-up-6 my-4">
+        <div class="card">
+          <div class="flex flex--justify-between flex--align-center border-b border--width-2 border--color-orange mb-3">
+            <h1 class="text--bold text--navy">{{.Title}}</h1>
+            <span class="text--bold text--navy text--size-lg">${{ .Params.Price }}</span>
+          </div>
+  
+          <div class="flex mb-4">
+            {{ with .Params.Tags }}
+              {{ range . }}
+                <span class="pill mr-1"> {{ . }}</span>
+              {{ end }}
+            {{ end }}
+          </div>
+  
+          <div class="text--size-md">
+            {{ .Content }}
+          </div>
+
+          {{ partial "add-to-cart" . }}
+
+        </div>
+
+      </div>
+    </section>
+  </article>
+{{ end }}

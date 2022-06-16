@@ -1,0 +1,15 @@
+<button
+ class="snipcart-add-item buy-button button button--salmon text--white my-3"
+ data-item-id="{{ .Params.id }}"
+
+  {{ if .Params.Image }}
+ data-item-image="{{ .Params.Image }}"
+  {{ end }}
+
+ data-item-name="{{ .Title }}"
+ data-item-price="{{ .Params.Price }}"
+ data-item-url="{{ .Permalink }}"
+ data-item-description="{{ .Content }}"
+>
+  Add to Cart
+</button>

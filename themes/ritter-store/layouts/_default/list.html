@@ -1,0 +1,40 @@
+{{ define "main" }}
+<article class="max-container pt-4">
+  <div class="flex flex--center-content">
+    <h2 class="text--bold text--navy">{{ .Title }}</h2>
+  </div>
+  <ul class="list block-container blocks tablet-up-2 lg-tablet-up-3 laptop-up-4">
+    {{ range .Pages }}
+      <li class="block">
+        <div class="card m-2">
+          {{ with .Params.image }}
+          <img class="card__image" src="{{ . }}" alt="" />
+          {{ end }}
+          <div class="card__header flex flex--align-center flex--justify-between">
+            <h3 class="product__name text--navy text--bold text--uppercase text--size-md mb-0">
+              {{ .Params.title }}
+            </h3>
+            <span class="product__price text--bold text--navy text--size-md">
+              ${{ .Params.price }}
+            </span>
+          </div>
+          <div class="card__content">
+            <div class="flex">
+              {{ with .Params.tags }} {{ range . }}
+              <span class="pill mr-1"> {{ . }}</span>
+              {{ end }} {{ end }}
+            </div>
+            <p class="product__description">{{ .Content }}</p>
+            <div class="product__button-container">
+                {{ partial "add-to-cart" . }}
+                <a class="button" href="{{ .Permalink }}">
+                  View Details
+                </a>
+              </div>
+          </div>
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+</article>
+{{ end }}

@@ -1,0 +1,54 @@
+{{ define "main" }}
+<article class="block-container blocks-4 max-container pt-4">
+  {{ range .Pages }}
+  <section class="category w-100 flex flex--column flex--justify-center mb-4">
+    <div class="category__header">
+      <h2 class="flex flex--justify-center text--bold text--navy mb-0 pb-0">
+        {{.Title}}
+      </h2>
+    </div>
+    <div class="category__products">
+      <ul class="list block-container blocks tablet-up-2 lg-tablet-up-3 laptop-up-4">
+        {{ range first 4 .Pages }}
+        <li class="block">
+          <div class="card m-2">
+            {{ with .Params.image }}
+            <img class="card__image" src="{{ . }}" alt="" />
+            {{ end }}
+            <div class="card__header flex flex--align-center flex--justify-between">
+              <h3 class="product__name text--navy text--bold text--uppercase text--size-md mb-0">
+                {{ .Params.title }}
+              </h3>
+              <span class="product__price text--bold text--navy text--size-md">
+                ${{ .Params.price }}
+              </span>
+            </div>
+            <div class="card__content">
+              <div class="flex">
+                {{ with .Params.tags }} {{ range . }}
+                <span class="pill mr-1"> {{ . }}</span>
+                {{ end }} {{ end }}
+              </div>
+              <p class="product__description">{{ .Content }}</p>
+              <div class="product__button-container">
+                {{ partial "add-to-cart" . }}
+                <a class="button" href="{{ .Permalink }}">
+                  View Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        {{ end }}
+      </ul>
+      <div class="block-container w-100 flex--center-content mt-4 mb-6">
+        <a class="button button--salmon text--white button--lg" href="{{ .Permalink }}">
+          View All {{ .Title }}
+          <i class="pi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+</article>
+{{ end }}
